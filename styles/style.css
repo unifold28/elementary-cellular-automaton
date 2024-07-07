@@ -1,0 +1,4 @@
+#display{
+    /* Makes canvas not blurry */
+    image-rendering: pixelated;
+}
