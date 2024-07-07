@@ -7,13 +7,72 @@
     <title>Elementary cellular automaton</title>
 
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/side-overlay.css">
 </head>
 <body>
-    <canvas id="display"></canvas>
+    <div id="container">
+        <div id="display-container">
+            <canvas id="display"></canvas>
+        </div>
+
+        <div id="side-overlay">
+            <div id="heading">ELEMENTARY CELLULAR AUTOMATON</div>
+
+            <div class="horizontal-line">
+                <div class="horizontal-line-left"></div>
+                <div class="horizontal-line-text">Parameters</div>
+                <div class="horizontal-line-right"></div>
+            </div>
+
+            <div id="parameters">
+                <ul class="list">
+                    <li id="neighbourhood-size-element" class="parameters-element">
+                        <div class="input-label">Neighbourhood size:</div>
+                        <select id="neighbourhood-size" class="input input-select">
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                        </select>
+                    </li>
+
+                    <li class="parameters-element">
+                        <div class="input-label">Rule set number:</div>
+                        <input type="number" id="rule-set-number" class="input input-number">
+                    </li>
+
+                    <li class="parameters-element">
+                        <div class="input-label">Initial state:</div>
+                        <select id="initial-state" class="input input-select">
+                            <option value="CENTER_CELL">Center cell</option>
+                            <option value="RANDOM">Random</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="horizontal-line">
+                <div class="horizontal-line-left"></div>
+                <div class="horizontal-line-text">Actions</div>
+                <div class="horizontal-line-right"></div>
+            </div>
+
+            <div id="actions">
+                <ul class="list">
+                    <li class="actions-element">
+                        <div id="regenerate" class="button">Regenerate</div>
+                    </li>
+                    <li class="actions-element">
+                        <div id="randomise-rule-set" class="button">Randomize rule set</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <script src="scripts/automaton.js"></script>
     <script src="scripts/display.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/inputs.js"></script>
 
     <script src="scripts/script.js"></script>
 </body>

@@ -1,0 +1,34 @@
+/* Transparent side overlay */
+
+#side-overlay{
+    width: 480px;
+    /* 32px is the padding */
+    height: calc(100% - 2 * 32px);
+
+    padding: 32px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    
+    background-color: #404040d8;
+}
+
+#heading{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.parameters-element{
+    display: flex;
+    /* Makes the input label and the input go on different sides */
+    justify-content: space-between;
+}
+
+.actions-element{
+    width: 100%;
+    height: 28px;
+}

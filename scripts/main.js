@@ -5,6 +5,10 @@ class Main{
         this.automaton = components.automaton;
         this.display = components.display;
 
+        this.automaton.setDecimalRuleSet(109);
+        this.automaton.size = Math.floor(this.display.width / 2);
+        this.automaton.maxGeneration = this.display.height;
+
         this.run();
     };
 
@@ -23,4 +27,9 @@ class Main{
         this.automaton.reset();
         this.display.reset();
     };
+
+    regenerate(){
+        this.reset();
+        this.run();
+    }
 };

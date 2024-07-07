@@ -1,0 +1,100 @@
+/* General classes */
+
+/* Horizontal lines (with text) */
+.horizontal-line{
+    width: 100%;
+
+    margin: 16px 0 8px 0;
+
+    display: flex;
+    align-items: center;
+}
+.horizontal-line-text{
+    margin: 0 8px;
+
+    font-size: 21px;
+    font-weight: bold;
+}
+.horizontal-line-left{
+    width: 32px;
+}
+.horizontal-line-right{
+    width: 100%;
+}
+.horizontal-line-left, .horizontal-line-right{
+    height: 0;
+
+    border-top: 2px solid #f0f0f0;
+}
+
+/* Lists (unstyled and margined) */
+.list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.list > li{
+    margin-bottom: 8px;
+}
+.list:last-child{
+    margin-bottom: 0;
+}
+
+/* Inputs (used in options / parameters) */
+.input{
+    width: 192px;
+    height: 28px;
+
+    margin: 0;
+    padding: 0;
+
+    background-color: #404040;
+
+    border: 1px solid #f0f0f0;
+    outline: none;
+}
+.input-select{
+    padding: 2px 4px;
+}
+.input-number{
+    /* 
+    Number inputs and dropdowns are shown having different widths and heights even 
+    if the paddings, widths and heights are set to be the same, so use calc() to 
+    subtract the padding here
+
+    4px - horizontal padding
+    2px - vertical padding
+    1px - border
+    */
+    width: calc(192px - 2 * 4px - 2 * 1px);
+    height: calc(28px - 2 * 2px - 2 * 1px);
+
+    padding: 2px 4px;
+}
+
+/* Button (used in options) */
+.button{
+    /* 
+    4px - horizontal padding
+    2px - vertical padding
+    1px - border
+    */
+    width: calc(192px - 2 * 4px - 2 * 1px);
+    height: calc(100% - 2 * 2px - 2 * 1px);
+
+    padding: 2px 4px;
+
+    float: right;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #404040;
+
+    color: #f0f0f0;
+
+    border: 1px solid #f0f0f0;
+
+    user-select: none;
+}

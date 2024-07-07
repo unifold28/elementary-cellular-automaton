@@ -7,15 +7,18 @@ class Display{
         this.element = document.getElementById("display");
         this.context = this.element.getContext("2d");
 
-        // Canvas size in px
-        this.width = 512;
-        this.height = 512;
-
-        this.cellSize = Math.round(this.width / this.automaton.size);
+        // Get the size of a fullscreen div and make the canvas the same size
+        var bounds = document.getElementById("container").getBoundingClientRect();
+        this.width = Math.ceil(bounds.width);
+        this.height = Math.ceil(bounds.height);
 
         // Set the canvas' size with JS because CSS makes it blurry
         this.element.setAttribute("width", this.width);
         this.element.setAttribute("height", this.height);
+    };
+
+    get cellSize(){
+        return Math.round(this.width / this.automaton.size);
     };
 
     setCell(cell, state){

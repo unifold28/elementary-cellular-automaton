@@ -1,19 +1,19 @@
 // Manages cells, rules, generations, etc.
 class Automaton{
     constructor(){
-        this.size = 256;
+        this.size = 512;
 
         this.generation = 0;
-        this.maxGeneration = this.size;
+        this.maxGeneration = 512;
 
         this.cells = [];
         this.previousCells = [];
 
         this.neighbourhoodSize = 3;
         this.ruleSet = [];
-        this.setDeicmalRuleSet(30);
+        this.setDecimalRuleSet(0);
 
-        this.initalStates = {
+        this.initialStates = {
             CENTER_CELL: () => {
                 for(var i = 0; i < this.size; i++){
                     // Set the center cell to 1, other cells to 0
@@ -32,12 +32,12 @@ class Automaton{
                 }
             }
         };
-        this.initalState = "RANDOM";
+        this.initialState = "RANDOM";
     };
 
     step(){
         if(this.generation == 0){
-            (this.initalStates[this.initalState])();
+            (this.initialStates[this.initialState])();
         }else{
             // Copy the array without object reference
             for(var i = 0; i < this.cells.length; i++){
@@ -72,7 +72,7 @@ class Automaton{
 
     // Accepts a usual (decimal) number
     // Converts it into binary and writes it to the rule set
-    setDeicmalRuleSet(number){
+    setDecimalRuleSet(number){
         var ruleSet = [];
         number = number.toString(2);
         for(var i = 0; i < number.length; i++){
@@ -83,5 +83,10 @@ class Automaton{
             ruleSet.unshift(0);
         }
         this.ruleSet = ruleSet;
+    };
+
+    // Returns the ruleset in the number (decimal) form
+    getDecimalRuleSet(){
+        return parseInt(this.ruleSet.join(""), 2);
     };
 };
