@@ -4,6 +4,8 @@ class Main{
         // Link components
         this.automaton = components.automaton;
         this.display = components.display;
+
+        this.run();
     };
 
     step(){
@@ -15,5 +17,10 @@ class Main{
         while(this.automaton.generation < this.automaton.maxGeneration){
             this.step();
         }
+    };
+
+    reset(){
+        this.automaton.reset();
+        this.display.reset();
     };
 };

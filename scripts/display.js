@@ -11,7 +11,7 @@ class Display{
         this.width = 512;
         this.height = 512;
 
-        this.cellSize = this.width / this.automaton.size;
+        this.cellSize = Math.round(this.width / this.automaton.size);
 
         // Set the canvas' size with JS because CSS makes it blurry
         this.element.setAttribute("width", this.width);
@@ -31,5 +31,10 @@ class Display{
         for(var i = 0; i < this.automaton.size; i++){
             this.setCell(i, this.automaton.cells[i]);
         }
+    };
+
+    reset(){
+        this.context.fillStyle = "#ffffff";
+        this.context.fillRect(0, 0, this.width, this.height);
     };
 };

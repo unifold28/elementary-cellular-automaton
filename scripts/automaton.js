@@ -2,29 +2,42 @@
 class Automaton{
     constructor(){
         this.size = 256;
+
         this.generation = 0;
         this.maxGeneration = this.size;
+
         this.cells = [];
         this.previousCells = [];
+
         this.neighbourhoodSize = 3;
-        this.ruleSet = [0, 0, 0, 1, 1, 1, 1, 0];
-    };
+        this.ruleSet = [];
+        this.setDeicmalRuleSet(30);
 
-    setInitialCells(){
-        for(var i = 0; i < this.size; i++){
-            // Set the center cell to 1, other cells to 0
-            var value = 0; 
-            if(i == Math.floor(this.size / 2)){
-                value = 1;
+        this.initalStates = {
+            CENTER_CELL: () => {
+                for(var i = 0; i < this.size; i++){
+                    // Set the center cell to 1, other cells to 0
+                    var value = 0; 
+                    if(i == Math.floor(this.size / 2)){
+                        value = 1;
+                    }
+        
+                    this.cells[i] = value;
+                }
+            },
+            RANDOM: () => {
+                // Randomize cells
+                for(var i = 0; i < this.size; i++){
+                    this.cells[i] = Math.round(Math.random());
+                }
             }
-
-            this.cells[i] = value;
-        }
+        };
+        this.initalState = "RANDOM";
     };
 
     step(){
         if(this.generation == 0){
-            this.setInitialCells();
+            (this.initalStates[this.initalState])();
         }else{
             // Copy the array without object reference
             for(var i = 0; i < this.cells.length; i++){
@@ -49,5 +62,26 @@ class Automaton{
             }
         }
         this.generation++;
-    }
+    };
+
+    reset(){
+        this.generation = 0;
+        this.cells = [];
+        this.previousCells = [];
+    };
+
+    // Accepts a usual (decimal) number
+    // Converts it into binary and writes it to the rule set
+    setDeicmalRuleSet(number){
+        var ruleSet = [];
+        number = number.toString(2);
+        for(var i = 0; i < number.length; i++){
+            var bit = parseInt(number[i], 10);
+            ruleSet.push(bit);
+        }
+        while(ruleSet.length < Math.pow(2, this.neighbourhoodSize)){
+            ruleSet.unshift(0);
+        }
+        this.ruleSet = ruleSet;
+    };
 };
