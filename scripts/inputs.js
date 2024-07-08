@@ -4,6 +4,8 @@ class Inputs{
         // Link components
         this.main = components.main;
 
+        this.sideOverlayToggle = true;
+
         // Map inputs to functions
         this.inputBinds = {
             "neighbourhood-size": (value) => {
@@ -33,6 +35,14 @@ class Inputs{
                 this.main.regenerate();
 
                 this.setInputValues();
+            },
+            "side-overlay-toggle": () => {
+                var display = "none";
+                if(this.sideOverlayToggle){
+                    display = "flex";
+                }
+                document.getElementById("side-overlay").style.display = display;
+                this.sideOverlayToggle = !this.sideOverlayToggle;
             },
         };
 

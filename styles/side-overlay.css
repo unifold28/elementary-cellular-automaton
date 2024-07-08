@@ -10,11 +10,28 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 0;
 
     display: flex;
     flex-direction: column;
-    
+
     background-color: #404040d8;
+
+    overflow-x: hidden;
+}
+
+#side-overlay-toggle{
+    width: 24px;
+    height: 24px;
+
+    padding: 0;
+
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 1;
+
+    font-size: 14px;
 }
 
 #heading{
